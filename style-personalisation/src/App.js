@@ -1,23 +1,18 @@
 import logo from './logo.svg';
 import './App.css';
 
+import ApplicationBar from './components/ApplicationBar';
+
+/* import background image */
+import backgroundImage from '../src/assests/home_page_bg.png'
+
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <ApplicationBar/>
+      <div> 
+        <img className='backgroundImageStyle' src={backgroundImage}/>
+      </div>
     </div>
   );
 }

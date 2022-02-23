@@ -36,3 +36,9 @@
     transform: rotate(360deg);
   }
 }
+
+.backgroundImageStyle {  
+  width: 1860px;
+  margin-left: -34px;
+}
+
