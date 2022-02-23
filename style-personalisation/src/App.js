@@ -6,7 +6,7 @@ import ApplicationBar from './components/ApplicationBar';
 import HomeBG from './components/HomePageBG'
 import Products from './components/Products'
 import ProductDetails from './components/ProductDetails';
-
+import TrackingDetails from './components/TrackingDetails';
 function App() {
   return (
     <Router>
@@ -16,6 +16,7 @@ function App() {
           <Route exact path='/' element={< HomeBG />}></Route>
           <Route exact path='/products' element={< Products />}></Route>
           <Route exact path='/products/:productId' element={<ProductDetails/>}></Route>
+          <Route exact path='/:productID/track' element={<TrackingDetails/>}></Route>
         </Routes>
       </div>
     </Router>
