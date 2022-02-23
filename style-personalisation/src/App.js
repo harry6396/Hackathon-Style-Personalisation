@@ -1,19 +1,24 @@
-import logo from './logo.svg';
 import './App.css';
+import { BrowserRouter as Router,Routes, Route, Link } from 'react-router-dom';
 
 import ApplicationBar from './components/ApplicationBar';
 
-/* import background image */
-import backgroundImage from '../src/assests/home_page_bg.png'
+import HomeBG from './components/HomePageBG'
+import Products from './components/Products'
+import ProductDetails from './components/ProductDetails';
 
 function App() {
   return (
-    <div className="App">
-      <ApplicationBar/>
-      <div> 
-        <img className='backgroundImageStyle' src={backgroundImage}/>
+    <Router>
+      <div className="App">
+        <ApplicationBar/>
+        <Routes>
+          <Route exact path='/' element={< HomeBG />}></Route>
+          <Route exact path='/products' element={< Products />}></Route>
+          <Route exact path='/products/:productId' element={<ProductDetails/>}></Route>
+        </Routes>
       </div>
-    </div>
+    </Router>
   );
 }
 
