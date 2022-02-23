@@ -53,6 +53,11 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 }));
 
 export default function ApplicationBar() {
+
+  const onSearchChange = (e) => {
+    console.log(e.target.value)
+  }
+
   return (
     <Box sx={{ flexGrow: 1 }} >
       <AppBar position="static" style={{background:'#fff'}}>
@@ -63,9 +68,11 @@ export default function ApplicationBar() {
         >
         <img 
           style = {{verticalAlign: 'middle',
-          height: '60px',
+          height: '52px',
           paddingBottom: '15px',
           paddingTop: '15px',
+          paddingLeft:'40px',
+          paddingRight:'50px',
           cursor:'pointer'}} 
           src = {logo}
           alt="logo" 
@@ -120,6 +127,7 @@ export default function ApplicationBar() {
             <StyledInputBase
               placeholder="Search for products, brands and more"
               inputProps={{ 'aria-label': 'search' }}
+              onChange={onSearchChange}
             />
           </Search>
         </Toolbar>
