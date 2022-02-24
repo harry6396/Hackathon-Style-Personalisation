@@ -16,7 +16,7 @@ function App() {
           <Route exact path='/' element={< HomeBG />}></Route>
           <Route exact path='/products' element={< Products />}></Route>
           <Route exact path='/product/:productId' element={<ProductDetails/>}></Route>
-          <Route exact path='/:productID/track' element={<TrackingDetails/>}></Route>
+          <Route exact path='/track/:orderID' element={<TrackingDetails/>}></Route>
         </Routes>
       </div>
     </Router>

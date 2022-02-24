@@ -1,6 +1,6 @@
 [
     {
-        "order_id":"ORDER-1",
+        "order_id":"order-1",
         "product_id":"1",
         "size":"XL",
         "price":1999,
@@ -9,6 +9,7 @@
             "name":"ABC",
             "fullAddress":"dassada",
             "pincode":"123456"
-        }
+        },
+        "order_state": 2
     }
 ]
