@@ -39,6 +39,16 @@ export default function ProductDescription(props) {
     setShowDeliveryOptions(!showDeliveryOptions)
   }
 
+  const onClickSize = (sizeClicked) => {
+    for(let iterator = 0; iterator < props.data["sizeAvailable"].length; iterator++) {
+      if(sizeClicked === props.data["sizeAvailable"][iterator] && document.getElementById(props.data["id"]+sizeClicked)) {
+        document.getElementById(props.data["id"]+sizeClicked).style = 'border: 1px solid #ff3f6c;background-color: #fff;color: #ff3f6c!important;'
+      } else if(document.getElementById(props.data["id"]+sizeClicked)) {
+        document.getElementById(props.data["id"]+sizeClicked).style = 'border: 1px solid #bfc0c6;background-color: #fff;color: #282c3f!important;'
+      }
+    }
+  }
+
   return (
     <div>
       <div>
@@ -59,21 +69,41 @@ export default function ProductDescription(props) {
             fontWeight: '400'}}>
             {props.data["name"]}
           </div>
+
           <div style={{display:'flex',    
             color: '#282c3f',
             fontSize: '24px',
             fontWeight: '500',
             lineHeight: '1', marginTop:'30px'}}>
-            <span style= {{fontSize: '24px', marginRight:'10px'}}>&#8377;</span> {props.data["price"]}
+            <span style= {{fontSize: '24px', marginRight:'10px'}}>&#8377;</span> {props.data["rentPrice"] + " (Rent Price for 10 days)"}
+          </div>
+
+          <div style={{display:'flex',    
+            color: '#282c3f',
+            fontSize: '24px',
+            fontWeight: '500',
+            lineHeight: '1', marginTop:'30px'}}>
+            <span style= {{fontSize: '24px', marginRight:'10px'}}>&#8377;</span> {props.data["securityPrice"] + " (Refundable Security Deposit)"}
           </div>
           
+          <div style={{display:'flex',    
+            color: '#282c3f',
+            fontSize: '18px',
+            fontWeight: '500',
+            lineHeight: '1', marginTop:'30px'}}>
+            <span style= {{fontSize: '18px', marginRight:'10px'}}>&#8377;</span> {props.data["price"] + " (Retail Price)"}
+          </div>
+
           <div style={{display:'flex', fontSize:'16px', fontWeight:'500', marginTop:'30px'}}>
             {"SELECT SIZE"}
           </div>
           <div style={{display:'flex'}}>
             {props.data["sizeAvailable"].map((index) => {
               return(
-                <div className={classes.sizeAvailable}>{index}</div>
+                <div id = {props.data["id"]+"-"+index} 
+                    className={classes.sizeAvailable} onClick = {onClickSize(index)}>
+                    {index}
+                </div>
               )
             })}
           </div>

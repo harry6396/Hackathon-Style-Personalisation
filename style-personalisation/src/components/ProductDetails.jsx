@@ -50,6 +50,7 @@ export default function ProductDetails() {
         data.map((index) => {
             if(index["id"] === splitArray[splitArray.length - 1]) {
                 setProductDetails(index)
+                return
             }
         })
     }, []);

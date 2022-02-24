@@ -19,7 +19,7 @@ export default function DeliveryDetails() {
             }}
         >
             <span style={{marginRight:'10px'}}><LocalShippingIcon/></span>
-            {"Get it by Fri, Mar 04"}
+            {"Get it by Fri, Mar 10"}
       </div>
       <div style={{
             display:'flex', 
