@@ -1,11 +1,11 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import Typography from '@material-ui/core/Typography';
 import IconLabelButtons from './IconLabelButtons'
 import LocalShippingIcon from '@mui/icons-material/LocalShipping';
 import InfoIcon from '@mui/icons-material/Info';
 
 import FormPropsTextFields from './FormPropsTextFields';
+import Tooltip from '@material-ui/core/Tooltip';
 
 import Button from '@material-ui/core/Button';
 import DeliveryDetails from './DeliveryDetails'
@@ -34,6 +34,7 @@ const useStyles = makeStyles({
 export default function ProductDescription(props) {
   const classes = useStyles();
   const [showDeliveryOptions, setShowDeliveryOptions] = React.useState(false)
+  const [productSelected, setProductSelected] = React.useState({})
 
   const onClickCheck = () => {
     setShowDeliveryOptions(!showDeliveryOptions)
@@ -41,6 +42,7 @@ export default function ProductDescription(props) {
 
   const onClickSize = (sizeClicked) => {
     const sizeSelected = sizeClicked.target.id.split('-')[1]
+    setProductSelected({size:sizeSelected, productId:sizeClicked.target.id.split('-')[0]})
     for(let iterator = 0; iterator < props.data["sizeAvailable"].length; iterator++) {
       if(sizeSelected === props.data["sizeAvailable"][iterator] && document.getElementById(props.data["id"]+"-"+props.data["sizeAvailable"][iterator])) {
         document.getElementById(sizeClicked.target.id).style = 'border: 1px solid #ff3f6c;background-color: #fff;color: #ff3f6c!important;'
@@ -76,15 +78,11 @@ export default function ProductDescription(props) {
             fontSize: '24px',
             fontWeight: '500',
             lineHeight: '1', marginTop:'30px'}}>
-            <span style= {{fontSize: '24px', marginRight:'10px'}}>&#8377;</span> {props.data["rentPrice"] + " (Rent Price for 10 days)"}
-          </div>
-
-          <div style={{display:'flex',    
-            color: '#282c3f',
-            fontSize: '24px',
-            fontWeight: '500',
-            lineHeight: '1', marginTop:'30px'}}>
-            <span style= {{fontSize: '24px', marginRight:'10px'}}>&#8377;</span> {props.data["securityPrice"] + " (Refundable Security Deposit)"}
+            <span style= {{fontSize: '24px', marginRight:'10px'}}>&#8377;</span> 
+            {props.data["rentPrice"]}
+            <Tooltip style={{fontSize:'20px'}} title={props.data["rentPrice"] + " (Rent Fee for 10 days) + \n" + props.data["securityPrice"] + " (Refundable Security Fee)"}>
+              <span ><InfoIcon style={{display:'flex', fontSize:'18px', marginLeft:'8px'}}/></span>
+            </Tooltip>
           </div>
           
           <div style={{display:'flex',
@@ -102,13 +100,13 @@ export default function ProductDescription(props) {
             {props.data["sizeAvailable"].map((index) => {
               return(
                 <div id = {props.data["id"]+"-"+index} 
-                    className={classes.sizeAvailable} value={index} onClick = {onClickSize}>
+                    className={classes.sizeAvailable} onClick = {onClickSize}>
                     {index}
                 </div>
               )
             })}
           </div>
-          <IconLabelButtons/>
+          <IconLabelButtons data={productSelected}/>
           <div style={{display:'flex', fontSize:'16px', fontWeight:'500', marginTop:'30px'}}>
             {"DELIVERY OPTIONS "}
             <span ><LocalShippingIcon style={{display:'flex', fontSize:'24px', marginLeft:'8px'}}/></span>
