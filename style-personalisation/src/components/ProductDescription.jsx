@@ -40,11 +40,12 @@ export default function ProductDescription(props) {
   }
 
   const onClickSize = (sizeClicked) => {
+    const sizeSelected = sizeClicked.target.id.split('-')[1]
     for(let iterator = 0; iterator < props.data["sizeAvailable"].length; iterator++) {
-      if(sizeClicked === props.data["sizeAvailable"][iterator] && document.getElementById(props.data["id"]+sizeClicked)) {
-        document.getElementById(props.data["id"]+sizeClicked).style = 'border: 1px solid #ff3f6c;background-color: #fff;color: #ff3f6c!important;'
-      } else if(document.getElementById(props.data["id"]+sizeClicked)) {
-        document.getElementById(props.data["id"]+sizeClicked).style = 'border: 1px solid #bfc0c6;background-color: #fff;color: #282c3f!important;'
+      if(sizeSelected === props.data["sizeAvailable"][iterator] && document.getElementById(props.data["id"]+"-"+props.data["sizeAvailable"][iterator])) {
+        document.getElementById(sizeClicked.target.id).style = 'border: 1px solid #ff3f6c;background-color: #fff;color: #ff3f6c!important;'
+      } else if(document.getElementById(props.data["id"]+"-"+props.data["sizeAvailable"][iterator])) {
+        document.getElementById(props.data["id"]+"-"+props.data["sizeAvailable"][iterator]).style = 'border: 1px solid #bfc0c6;background-color: #fff;color: #282c3f!important;'
       }
     }
   }
@@ -86,7 +87,7 @@ export default function ProductDescription(props) {
             <span style= {{fontSize: '24px', marginRight:'10px'}}>&#8377;</span> {props.data["securityPrice"] + " (Refundable Security Deposit)"}
           </div>
           
-          <div style={{display:'flex',    
+          <div style={{display:'flex',
             color: '#282c3f',
             fontSize: '18px',
             fontWeight: '500',
@@ -101,7 +102,7 @@ export default function ProductDescription(props) {
             {props.data["sizeAvailable"].map((index) => {
               return(
                 <div id = {props.data["id"]+"-"+index} 
-                    className={classes.sizeAvailable} onClick = {onClickSize(index)}>
+                    className={classes.sizeAvailable} value={index} onClick = {onClickSize}>
                     {index}
                 </div>
               )
