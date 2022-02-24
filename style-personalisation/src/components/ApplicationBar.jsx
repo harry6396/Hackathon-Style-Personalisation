@@ -68,7 +68,7 @@ export default function ApplicationBar() {
         >
         <img 
           style = {{verticalAlign: 'middle',
-          height: '52px',
+          height: '90px',
           paddingBottom: '15px',
           paddingTop: '15px',
           paddingLeft:'40px',

@@ -14,7 +14,7 @@ export default function IconLabelButtons() {
                 minWidth: '108px',
                 minHeight: '22px',
                 width:'350px',
-                height:'50px',
+                height:'60px',
                 fontSize:'18px',
                 fontWeight:'500'
               }}
@@ -30,7 +30,7 @@ export default function IconLabelButtons() {
       minWidth: '108px',
       minHeight: '22px',
       width:'350px',
-      height:'50px',
+      height:'60px',
       fontSize:'18px',
       fontWeight:'500'
     }}
