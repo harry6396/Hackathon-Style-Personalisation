@@ -7,6 +7,8 @@ import CardMedia from '@material-ui/core/CardMedia';
 import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
 
+import { useNavigate } from "react-router-dom"
+
 /*import data*/
 import data from '../data/data.json';
 
@@ -44,6 +46,12 @@ const useStylesGrid = makeStyles((theme) => ({
 export default function Products() {
   const classes = useStyles();
   const gridClasses = useStylesGrid();
+  let history = useNavigate();
+
+  const onClickCharter = () => {
+    history('/product/12');
+  }
+
   return (
     <div className={gridClasses.root}>
       <Grid container spacing={1}>
@@ -56,6 +64,7 @@ export default function Products() {
               className={classes.media}
               image={index["image"][0]}
               title={index["brand"]}
+              onClick={onClickCharter}
             />
             <CardContent>
               <Typography gutterBottom variant="h5" component="h2">

@@ -22,7 +22,7 @@ export default function OrderSummary(props) {
     }, []);
 
     const onClickRentNow = () => {
-        history('/tracking');
+        history('/track/order-1');
     }
 
     return (

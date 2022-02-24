@@ -34,11 +34,11 @@ function getSteps() {
 function getStepContent(step) {
   switch (step) {
     case 0:
-      return `Order has been placed`;
+      return `Your Order has been placed.`;
     case 1:
-      return 'Order has been packed.';
+      return 'Your item has been packed.';
     case 2:
-      return `Order shipped.`;
+      return `Your item has been shipped.`;
     default:
       return 'Unknown step';
   }
@@ -53,10 +53,10 @@ export default function TrackingDetails() {
     const splitArray = window.location.pathname.split('/')
     orderdetail.map((index) => {
         if(index["order_id"] === splitArray[splitArray.length - 1]) {
-            setOrderDetails(index)
-            data.map((index) => {
-                if(index["id"] ===  orderDetails["product_id"]){
-                    setProductDetails(index)
+            data.map((index1) => {
+                if(index1["id"] ===  index["product_id"]){
+                    setProductDetails(index1)
+                    setOrderDetails(index)
                     return
                 }
             })
@@ -64,30 +64,27 @@ export default function TrackingDetails() {
         }
     })
     }, []);
-  
-    console.log(orderDetails)
   return (
-    orderDetails && <div>
-    
-     <div className={classes.root} style={{width: "40%", top: "20%", left: "40%", position: "absolute"}}>
-     <div>
-                <Grid container item sm={6}>
-                    { productDetails != null && <Carousel data={productDetails["image"]}/> }
-                </Grid>
-        </div>
-      <Stepper activeStep={orderDetails["order_state"]} orientation="vertical">
-        {steps.map((label, index) => (
-          <Step key={label}>
-            <StepLabel>{label}</StepLabel>
-            <StepContent>
-              <Typography>{getStepContent(index)}</Typography>
-            </StepContent>
-          </Step>
-        ))}
-      </Stepper>
-
-    </div>
-
-    </div>
+    <Grid container spacing={1}>
+        {orderDetails && 
+          <Grid container item sm={3}>
+            { productDetails != null && <Carousel data={productDetails["image"]}/> }
+          </Grid>
+        }
+        
+        {orderDetails && 
+        <Grid container item sm={3}>
+            <Stepper style={{marginLeft: '200px', marginTop: '50px'}} activeStep={orderDetails["order_state"]} orientation="vertical">
+              {steps.map((label, index) => (
+                <Step key={label}>
+                  <StepLabel>{label}</StepLabel>
+                  <StepContent>
+                    <Typography>{getStepContent(index)}</Typography>
+                  </StepContent>
+                </Step>
+              ))}
+            </Stepper>
+        </Grid>}
+    </Grid>
   );
 }

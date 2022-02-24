@@ -6,6 +6,7 @@ import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import InputBase from '@mui/material/InputBase';
 import SearchIcon from '@mui/icons-material/Search';
+import { useNavigate } from "react-router-dom"
 
 /** import images */
 import logo from '../assests/logo.png';
@@ -53,9 +54,13 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 }));
 
 export default function ApplicationBar() {
-
+  let history = useNavigate();
   const onSearchChange = (e) => {
     console.log(e.target.value)
+  }
+
+  const onClickCharter = () => {
+    history('/products');
   }
 
   return (
@@ -119,6 +124,14 @@ export default function ApplicationBar() {
             sx={{ flexGrow: 2, display: { xs: 'none', sm: 'block', color:'#282c3f', fontSize: '14px', letterSpacing: '.3px', fontWeight: '500', cursor:'pointer'  } }}
           >
             STUDIO
+          </Typography>
+          <Typography
+            onClick={onClickCharter}
+            noWrap
+            component="div"
+            sx={{ flexGrow: 2, display: { xs: 'none', sm: 'block', color:'#282c3f', fontSize: '14px', letterSpacing: '.3px', fontWeight: '500', cursor:'pointer'  } }}
+          >
+            CHARTER
           </Typography>
           <Search style={{ background: '#f5f5f6', color: '#696e79'}}>
             <SearchIconWrapper>
