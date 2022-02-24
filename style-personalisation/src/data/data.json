@@ -123,8 +123,8 @@
     {
         "id" : "12",
         "name" : "Ethnix Men Beige & Pink Sherwani Set",
-        "sizeAvailable" : ["S", "M", "L", "XL", "XXL", "XXXL"],
-        "image": ["https://assets.myntassets.com/h_720,q_90,w_540/v1/assets/images/15538564/2021/9/21/dc02be11-be58-4a3e-be4b-3b6e4d4e842d1632206771522Sherwani1.jpg"],
+        "sizeAvailable" : ["M", "L", "XL", "XXL"],
+        "image": ["https://assets.myntassets.com/h_720,q_90,w_540/v1/assets/images/15538564/2021/9/21/dc02be11-be58-4a3e-be4b-3b6e4d4e842d1632206771522Sherwani1.jpg", "https://assets.myntassets.com/h_720,q_90,w_540/v1/assets/images/15227240/2021/9/23/c5493e8c-e237-4bef-9bf4-6d7d2551f6a11632391775314-Manyavar-Men-Sherwani-7121632391774348-1.jpg"],
         "brand": "ethnix",
         "price": "20995",
         "category": "Sherwani",
